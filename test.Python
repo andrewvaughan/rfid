@@ -1,0 +1,29 @@
+import logging
+import sys
+
+from uhppote_rfid import Controller
+
+# Setup Logging
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(1)
+ch.setFormatter(
+    logging.Formatter(
+        fmt=u"[%(asctime)s] %(name)-25s :: %(levelname)-8s %(message)s",
+        datefmt='%m-%d-%Y %H:%M:%S'
+    )
+)
+
+logging.getLogger().addHandler(ch)
+logging.getLogger().setLevel(1)
+
+
+# Controller
+controller = Controller(
+    host='192.168.1.123',
+    port=60000,
+    serial_number=223199015
+)
+
+
+controller.getStatus()
+#controller.openDoor(1)
